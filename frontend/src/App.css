@@ -1,0 +1,51 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app h1, .register-head{
+  text-align: center;
+  padding: 1rem 0 1rem;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.form input, .form button{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  border: 1px solid #000;
+  font-size: 1rem;
+}
+
+.form button{
+  cursor: pointer;
+}
+.user-notes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin: 0.5rem auto;
+  border: 1px solid #ddd;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+.user-body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.btn button{
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  
+}
