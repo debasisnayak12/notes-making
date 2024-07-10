@@ -8,7 +8,7 @@ const Login = () => {
   const handleSubmit = () => {
     const payload = { email, pass };
     axios
-      .post("http://localhost:8080/users/login", payload)
+      .post("https://notes-making.onrender.com/users/login", payload)
       .then((response) => {
         console.log(response);
         localStorage.setItem("token",response.data.token)

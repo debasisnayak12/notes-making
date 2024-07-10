@@ -9,7 +9,7 @@ const Signup = () => {
   const handleSubmit = () => {
     const payload = { email, username, pass };
     axios
-      .post("http://localhost:8080/users/register", payload)
+      .post("https://notes-making.onrender.com/users/register", payload)
       .then((response) => {
         console.log(response);
         setUsername("");

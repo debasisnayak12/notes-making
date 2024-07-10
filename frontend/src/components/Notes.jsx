@@ -7,7 +7,7 @@ const Notes = () => {
     useEffect(()=>{
         const token = localStorage.getItem("token")
         axios
-        .get("http://localhost:8080/notes",{
+        .get("https://notes-making.onrender.com/notes",{
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
@@ -23,8 +23,8 @@ const Notes = () => {
         {
             notes && (
                 notes.map((item,idx)=>(
-                    <div className='user-notes'>
-                    <div className='user-body' key={idx}>
+                    <div className='user-notes' key={idx}>
+                    <div className='user-body' >
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
                     </div>
