@@ -7,12 +7,30 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [error,setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    const check = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return check.test(String(email).toLowerCase())
+  }
+
   const handleSubmit = () => {
+    if(username === "" || email === "" || pass === ""){
+      setError("All fields are mandatory!");
+      return;
+    }
+
+    if(!validateEmail(email)){
+      setError("Invalid Email format");
+      return;
+    }
+
     setLoading(true);
+    setError("");
+
     const payload = { email, username, pass };
     axios
       .post("https://notes-making.onrender.com/users/register", payload)
@@ -26,6 +44,7 @@ const Signup = () => {
       })
       .catch((err) => {
         console.log(err);
+        setError("Registration failed. Please try again.")
         setLoading(false);
       });
   };
@@ -57,6 +76,7 @@ const Signup = () => {
             onChange={(e) => setPass(e.target.value)}
           />
           <button onClick={handleSubmit}>{loading ? "Loading..." : "Submit"}</button>
+        {error && <p className="error-message">{error}</p>}
           <div className="already-acc">
             Already have an account? <NavLink to="/login">Click here</NavLink>
           </div>

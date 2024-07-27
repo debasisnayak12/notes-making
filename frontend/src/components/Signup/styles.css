@@ -67,4 +67,5 @@
 .form > .already-acc a{
     color: rgb(60, 29, 29);
     text-decoration: none;
+    font-weight: 600;
 }

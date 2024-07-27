@@ -6,29 +6,34 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  // const [error, setError] = useState("");
+  const [error, setError] = useState("");
+  const [loading,setLoading] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
+    setLoading(true);
     const payload = { email, pass };
     axios
       .post("https://notes-making.onrender.com/users/login", payload)
       .then((response) => {
         console.log(response);
-        localStorage.setItem("token",response.data.token)
+        localStorage.setItem("token",response.data.token);
+        localStorage.setItem("username",response.data.username);
         setEmail("");
         setPass("");
-        // setError("");
-        // navigate("/createNotes");
+        setError("");
+        setLoading(false);
+        navigate("/createNotes");
       })
       .catch((err) => {
         console.log(err);
-        // if (err.response && err.response.status === 401) {
-        //   setError("User does not exist or incorrect credentials");
-        // } else {
-        //   setError("An error occurred. Please try again.");
-        // }
+        if (err.response && err.response.status === 401) {
+          setError("Incorrect Password");
+        } else {
+          setError("User doesn't exist!");
+        }
+        setLoading(false);
       });
   }
   
@@ -51,8 +56,8 @@ const Login = () => {
           value={pass}
           onChange={(e) => setPass(e.target.value)}
         />
-        <button onClick={handleSubmit}>Submit</button>
-        {/* {error && <p className="error-message">{error}</p>} */}
+        <button onClick={handleSubmit}>{loading ? "Loading..." : "Submit"}</button>
+        {error && <p className="error-message">{error}</p>}
         <div className="already-acc">
             Don't have an account? <NavLink to="/signup">Click here</NavLink>
           </div>
