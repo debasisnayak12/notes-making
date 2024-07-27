@@ -1,0 +1,70 @@
+.account{
+    background-image: url("../../assets/home.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-container{
+    max-width: 450px;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px;
+    padding: 1rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.register-head{
+    font-size: 2rem;
+    border-bottom: 3px solid #000;
+}
+.form{
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+.form label{
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 500;
+} 
+.form input {
+    width: 100%;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    border: 1px solid #000;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+}
+.form input::placeholder{
+    color: #000;
+}
+.form button {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.75rem;
+    background: rgb(60, 29, 29);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.form > .already-acc a{
+    color: rgb(60, 29, 29);
+    text-decoration: none;
+}

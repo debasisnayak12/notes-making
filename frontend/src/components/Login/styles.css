@@ -1,0 +1,10 @@
+.account{
+    background-image: url("../../assets/home.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

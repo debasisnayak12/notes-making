@@ -1,0 +1,32 @@
+.home{
+    background-image: url("../../assets/home.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    height: 4rem;
+    box-shadow: 0 0 5px;
+}
+.navbar > .head {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+.navbar > .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+.links a {
+    text-decoration: none;
+    color: #eee;
+}

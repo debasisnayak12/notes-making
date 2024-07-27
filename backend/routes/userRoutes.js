@@ -11,7 +11,7 @@ userRouter.post("/register",async(req,res)=>{
     try {
         bcrypt.hash(pass, 8, async(err, hash) => {
             if(err){
-                res.send({"err":err})
+                res.status(500).send({"err":err})
             }else{
                 const user = new UserModel({username,email,pass:hash})
                 await user.save()
@@ -34,14 +34,14 @@ userRouter.post("/login", async(req,res)=>{
                     const token = jwt.sign({userID:user._id, user:user.username},"accio")
                     res.send({"msg":"Logged In!","token":token})
                 }else{
-                    res.send({"err":err})
+                    res.status(401).send({"err":"Incorrect Password"})
                 }
             })
         }else{
-            res.send({"msg":"User doesn't exist!"})
+            res.send(401).send({"msg":"User doesn't exist!"})
         }
     } catch (error) {
-        res.status(400).send({"err":error})
+        res.status(500).send({"err":error})
     }
 })
 
