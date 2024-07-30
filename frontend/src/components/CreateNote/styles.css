@@ -3,4 +3,99 @@
   background: #603813;
   background: -webkit-linear-gradient(to right, #b29f94, #603813);
   background: linear-gradient(to right, #b29f94, #603813);
+  position: relative;
+}
+.create-nav {
+  height: 56px;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.create-nav h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.create-nav h3 span {
+  text-transform: capitalize;
+}
+.search-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #b29f94;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 100%;
+}
+.search-area input {
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+}
+.search-area input::placeholder {
+  color: #000;
+}
+.create-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+}
+.create-nav button:hover {
+  transform: scale(1.1);
+}
+.add-note {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.add-note:hover {
+  transform: scale(1.1);
+}
+.notes-cards {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.add-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 100%;
+  outline: none;
+  border-radius: 1rem;
+  background: wheat;
+  box-shadow: 0 0 12px;
+  padding: 0.75rem;
 }

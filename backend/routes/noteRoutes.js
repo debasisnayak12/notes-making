@@ -7,11 +7,11 @@ const noteRouter = express.Router()
 //CREATE the Notes
 noteRouter.post("/create", auth,async(req,res)=>{
     try {
-        const note=new NoteModel(req.body)
+        const note = new NoteModel(req.body)
         await note.save()
-        res.send({"msg":"A new note has been added"})
+        res.status(201).send(note)
     } catch (error) {
-        res.send({"error":error})
+        res.status(400).send({"error":error.message})
     }
 })
 // READ the Notes

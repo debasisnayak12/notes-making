@@ -4,9 +4,9 @@ import "./App.css"
 import Homepage from './components/Home/Homepage'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
-import Notes from './components/Notes/Notes'
 import CreateNotes from './components/CreateNote/CreateNotes'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -16,8 +16,8 @@ const App = () => {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/createNotes' element={<CreateNotes/>}/>
-        <Route path='/notes' element={<Notes/>}/>
       </Routes>
+      <ToastContainer />
     </div>
   )
 }

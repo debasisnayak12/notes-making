@@ -17,7 +17,7 @@ app.listen(8080, async() => {
         await connection
         console.log("Connected to the DB")
         console.log("Server is Running on port 8080")
-    }catch(err){
-        res.send({"err":err})
+    }catch(error){
+        res.send({"err":error})
     }
 })

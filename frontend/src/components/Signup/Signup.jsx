@@ -52,7 +52,7 @@ const Signup = () => {
   return (
     <div className="signup account">
       <div className="form-container">
-        <h2 className="register-head">Registration Form</h2>
+        <h2 className="register-head">Registration</h2>
         <div className="form">
           <label>Username:</label>
           <input

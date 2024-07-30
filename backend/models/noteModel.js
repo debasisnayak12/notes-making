@@ -7,7 +7,7 @@ const noteSchema = mongoose.Schema({
     user:{type:String,required:true},
     creationDateTime: {
         type: Date,
-        default: Date.now()
+        default: new Date().getTime(),
       },
 },{
     versionKey:false
