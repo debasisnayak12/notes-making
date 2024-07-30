@@ -9,9 +9,9 @@ noteRouter.post("/create", auth,async(req,res)=>{
     try {
         const note = new NoteModel(req.body)
         await note.save()
-        res.status(201).send(note)
+        res.status(201).send({ message: "A new note has been added", note })
     } catch (error) {
-        res.status(400).send({"error":error.message})
+        res.status(400).send({error:error.message})
     }
 })
 // READ the Notes
