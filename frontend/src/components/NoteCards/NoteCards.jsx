@@ -14,8 +14,8 @@ const NoteCards = ({title,date,content,onEdit,onDelete}) => {
             <p>{content?.slice(0,1000)}</p>
         </div>
         <div className='note-func'>
-        <EditRoundedIcon onClick={onEdit} sx={{cursor: "pointer"}} />
-        <DeleteRoundedIcon onClick={onDelete} sx={{cursor: "pointer"}} />
+        <EditRoundedIcon onClick={onEdit} className="edit" />
+        <DeleteRoundedIcon onClick={onDelete} className="delete" />
         </div>
     </div>
   )

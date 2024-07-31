@@ -16,3 +16,10 @@
     justify-content: flex-end;
     gap: 1.5rem;
 }
+.edit, .delete{
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.edit:hover, .delete:hover{
+    transform: scale(1.2);
+}

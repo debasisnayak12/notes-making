@@ -70,7 +70,11 @@ const CreateNotes = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setNotes(response.data.notes);
+        if(Array.isArray(response.data)){
+          setNotes(response.data)
+        }else{
+          setNotes([]);
+        }
       })
       .catch((error) => {
         console.log(error);
