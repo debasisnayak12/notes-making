@@ -9,3 +9,18 @@
 body{
     overflow-x: hidden;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(106, 32, 32, 0.612);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: wheat;
+    border-radius: 3rem;
+  }

@@ -8,16 +8,14 @@ import NoteCards from "../NoteCards/NoteCards";
 import AddEditNotes from "../AddEditNotes/AddEditNotes";
 import moment from "moment";
 import { Modal } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import EmptyCard from "../EmptyCard/EmptyCard";
 
 const CreateNotes = () => {
   const [username, setUsername] = useState("");
   const [open, setOpen] = useState({ isShow: false, type: "add", data: null });
   const [notes, setNotes] = useState([]);
-  const [error, setError] = useState("");
-
-  // const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getAllNotes = () => {
     const token = localStorage.getItem("token");
@@ -41,36 +39,60 @@ const CreateNotes = () => {
   }, []);
 
   const handleEdit = (noteDetails) => {
-    setOpen({isShow:true,type:"edit",data:noteDetails})
-  }
+    setOpen({ isShow: true, type: "edit", data: noteDetails });
+  };
 
   const handleDelete = (noteData) => {
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://notes-making.onrender.com/notes/delete/${noteData._id}`, {
+      .delete(
+        `https://notes-making.onrender.com/notes/delete/${noteData._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        setNotes(notes.filter((note) => note._id !== noteData._id));
+        toast.success("Notes Deleted Successfull!");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to Delete Notes!");
+      });
+  };
+
+  const onSearchNotes = (query) => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("https://notes-making.onrender.com/notes/search", {
+        params: { query },
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response);
-        setNotes(notes.filter(note => note._id !== noteData._id));
-        toast.success("Notes Deleted Successfull!")
+        setNotes(response.data.notes);
       })
-      .catch((error)=>{
+      .catch((error) => {
         console.log(error);
-        toast.error("Failed to Delete Notes!")
-        setError("Failed to Delete Note.")
-      })
-  }
+      });
+  };
+
+  useEffect(() => {
+    if(searchQuery){
+      onSearchNotes(searchQuery)
+    }else{
+      getAllNotes()
+    }
+  },[searchQuery])
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     window.location.href = "/login";
-  }
+  };
 
   const handleOpen = () => setOpen({ isShow: true, type: "add", data: null });
   const handleClose = () => setOpen({ isShow: false, type: "add", data: null });
-  
 
   return (
     <div className="create-container">
@@ -80,26 +102,36 @@ const CreateNotes = () => {
         </h3>
         <div className="search-area">
           <SearchRoundedIcon />
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         <button onClick={handleLogout}>
           Logout
           <LogoutRoundedIcon />
         </button>
       </div>
-      <div className="notes-cards">
-        {notes &&
-          notes.map((item, index) => (
-            <NoteCards
-            key={item._id}
-              title={item.title}
-              date={moment(item.creationDateTime).format("Do MMM YYYY")}
-              content={item.body}
-              onEdit={() => handleEdit(item)}
-              onDelete={() => handleDelete(item)}
-            />
-          ))}
-      </div>
+
+      {notes.length > 0 ? (
+        <div className="notes-cards">
+          {notes &&
+            notes.map((item, index) => (
+              <NoteCards
+                key={item._id}
+                title={item.title}
+                date={moment(item.creationDateTime).format("Do MMM YYYY")}
+                content={item.body}
+                onEdit={() => handleEdit(item)}
+                onDelete={() => handleDelete(item)}
+              />
+            ))}
+        </div>
+      ) : (
+        <EmptyCard />
+      )}
 
       <div className="add-note">
         <AddBoxRoundedIcon sx={{ fontSize: "3rem" }} onClick={handleOpen} />
@@ -118,5 +150,5 @@ const CreateNotes = () => {
     </div>
   );
 };
- 
+
 export default CreateNotes;

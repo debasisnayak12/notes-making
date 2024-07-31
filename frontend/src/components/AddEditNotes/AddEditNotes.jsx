@@ -21,7 +21,8 @@ const AddEditNotes = ({onClose, noteData, type, setNotes}) => {
       })
       .then((response) => {
         console.log(response.data);
-        setNotes((prevNotes) => [...prevNotes,response.data]);
+        const newNote = response.data.note;
+        setNotes((prevNotes) => [...prevNotes,newNote]);
         toast.success("New Notes Added!")
         onClose();
       })

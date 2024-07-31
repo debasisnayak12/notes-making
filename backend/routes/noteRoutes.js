@@ -56,6 +56,23 @@ noteRouter.delete("/delete/:noteID", auth,async(req,res)=>{
     }
 })
 
+// SEARCH the notes
+noteRouter.get("/search", auth,async(req,res)=>{
+    const {query} = req.query
+    try {
+         const notes = await NoteModel.find({
+            userID: req.body.userID,
+            $or:[
+                {title: { $regex: query, $options: 'i'} },
+                {body: { $regex: query, $options: 'i'} }
+            ]
+         });
+         res.send(notes);
+    } catch (error) {
+        res.send({"error":error.message})
+    }
+})
+
 
 module.exports = {
     noteRouter

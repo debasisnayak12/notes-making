@@ -1,0 +1,12 @@
+.empty-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.empty-card p {
+    font-weight: 500;
+}

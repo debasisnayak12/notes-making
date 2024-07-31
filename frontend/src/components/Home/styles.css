@@ -30,3 +30,24 @@
     text-decoration: none;
     color: #eee;
 }
+
+@media (max-width:720px){
+    .navbar > .head {
+        font-size: 1.5rem;
+    }
+    .links a {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width:480px){
+    .navbar{
+        padding: 1rem;
+    }
+    .navbar > .links {
+        gap: 1rem;
+    }
+    .links a {
+        font-size: 1rem;
+    }
+}
