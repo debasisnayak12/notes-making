@@ -7,7 +7,7 @@ const EmptyCard = () => {
     <div className='empty-card'>
         <div><AddCardRoundedIcon  sx={{ fontSize: "7rem" }}/></div>
         <p>Start creating your first Note!</p> 
-        <p>Click the Add button to jot down your thoughts, ideas, and reminder.</p>
+        <p>Click the Add button to write down your thoughts, ideas, and reminder.</p>
         <p>Lets get started!</p>
     </div>
   )
